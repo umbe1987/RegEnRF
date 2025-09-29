@@ -1,0 +1,41 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# rerf
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/umbe1987/rerf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/umbe1987/rerf/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+`rerf` is the implementation of the Regression-Enhanced Random Forests algorithm as described in [Zhang et al. (2019)](https://doi.org/10.48550/arXiv.1904.10416).
+
+## Installation
+
+You can install the development version of rerf like so:
+
+``` r
+devtools::install_github("umbe1987/rerf")
+```
+
+## Example
+
+This is a basic example which shows you how to perform Regression-Enhanced Random Forests regression with `rerf`:
+
+```{r example}
+library(rerf)
+x <- matrix(rnorm(100 * 20), 100, 20)
+y <- rnorm(100)
+mod <- rerf(x, y, 0.1)
+```
