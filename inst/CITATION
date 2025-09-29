@@ -1,9 +1,10 @@
-@misc{zhang2019regressionenhancedrandomforests,
-      title={Regression-Enhanced Random Forests},
-      author={Haozhe Zhang and Dan Nettleton and Zhengyuan Zhu},
-      year={2019},
-      eprint={1904.10416},
-      archivePrefix={arXiv},
-      primaryClass={stat.ML},
-      url={https://arxiv.org/abs/1904.10416},
-}
+bibentry(
+  bibtype = "Misc",
+  title = "Regression-Enhanced Random Forests",
+  author = "Haozhe Zhang and Dan Nettleton and Zhengyuan Zhu",
+  year = 2019,
+  eprint = "1904.10416",
+  archivePrefix = "arXiv",
+  primaryClass = "stat.ML",
+  url = "https://arxiv.org/abs/1904.10416"
+)
