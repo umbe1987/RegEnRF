@@ -30,7 +30,9 @@ validate_rerf <- function(x) {
 #' `rerf()` implements Regression-Enhanced Random Forests algorithm (based on
 #' Zhang et al., 2019 paper) for regression.
 #'
-#' @param x A numeric matrix of predictors.
+#' @param x A numeric matrix of predictors. Requirement: nvars >1;
+#'   in other words, x should have 2 or more columns. This is a constraint
+#'   of [glmnet::glmnet()].
 #' @param y A numeric response vector.
 #' @param lambda See 'lambda' argument in [glmnet::glmnet()].
 #' @param ntree See 'ntree' argument in [randomForest::randomForest()].

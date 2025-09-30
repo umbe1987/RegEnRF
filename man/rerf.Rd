@@ -7,7 +7,9 @@
 rerf(x, y, lambda, ntree = 500, nodesize = 5, weights = NULL, ...)
 }
 \arguments{
-\item{x}{A numeric matrix of predictors.}
+\item{x}{A numeric matrix of predictors. Requirement: nvars >1;
+in other words, x should have 2 or more columns. This is a constraint
+of \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
 
 \item{y}{A numeric response vector.}
 
