@@ -4,7 +4,7 @@
 \alias{rerf}
 \title{Regression-Enhanced Random Forests}
 \usage{
-rerf(x, y, lambda, ntree = 500, nodesize = 5, weights = NULL)
+rerf(x, y, lambda, ntree = 500, nodesize = 5, weights = NULL, ...)
 }
 \arguments{
 \item{x}{A numeric matrix of predictors.}
@@ -18,6 +18,8 @@ rerf(x, y, lambda, ntree = 500, nodesize = 5, weights = NULL)
 \item{nodesize}{See 'nodesize' argument in \code{\link[randomForest:randomForest]{randomForest::randomForest()}}.}
 
 \item{weights}{See 'weights' argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
+
+\item{...}{other arguments}
 }
 \value{
 An object with S3 class "rerf"
@@ -25,6 +27,10 @@ An object with S3 class "rerf"
 \description{
 \code{rerf()} implements Regression-Enhanced Random Forests algorithm (based on
 Zhang et al., 2019 paper) for regression.
+}
+\details{
+This function is based on the packages \code{randomForest::randomForest}
+and \code{glmnet::glmnet}.
 }
 \examples{
 x <- matrix(rnorm(100 * 20), 100, 20)
