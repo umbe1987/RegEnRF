@@ -4,7 +4,7 @@
 \alias{rerf}
 \title{Regression-Enhanced Random Forests}
 \usage{
-rerf(x, y, lambda, ntree = 500, nodesize = 5, weights = NULL, ...)
+rerf(x, y, lambda, ...)
 }
 \arguments{
 \item{x}{A numeric matrix of predictors. Requirement: nvars >1;
@@ -15,13 +15,8 @@ of \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
 
 \item{lambda}{See 'lambda' argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
 
-\item{ntree}{See 'ntree' argument in \code{\link[randomForest:randomForest]{randomForest::randomForest()}}.}
-
-\item{nodesize}{See 'nodesize' argument in \code{\link[randomForest:randomForest]{randomForest::randomForest()}}.}
-
-\item{weights}{See 'weights' argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
-
-\item{...}{other arguments}
+\item{...}{other arguments passed to \code{\link[glmnet:glmnet]{glmnet::glmnet()}} and
+\code{\link[randomForest:randomForest]{randomForest::randomForest()}}.}
 }
 \value{
 An object with S3 class "rerf"
@@ -37,7 +32,7 @@ and \code{glmnet::glmnet}.
 \examples{
 x <- matrix(rnorm(100 * 20), 100, 20)
 y <- rnorm(100)
-mod <- rerf(x, y, 0.1)
+mod <- rerf(x, y, lambda = 0.1)
 }
 \references{
 Zhang, H., Nettleton, D., & Zhu, Z. (2019). Regression-enhanced

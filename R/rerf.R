@@ -35,10 +35,8 @@ validate_rerf <- function(x) {
 #'   of [glmnet::glmnet()].
 #' @param y A numeric response vector.
 #' @param lambda See 'lambda' argument in [glmnet::glmnet()].
-#' @param ntree See 'ntree' argument in [randomForest::randomForest()].
-#' @param nodesize See 'nodesize' argument in [randomForest::randomForest()].
-#' @param weights See 'weights' argument in [glmnet::glmnet()].
-#' @param ... other arguments
+#' @param ... other arguments passed to [glmnet::glmnet()] and
+#'   [randomForest::randomForest()].
 #' @details This function is based on the packages `randomForest::randomForest`
 #'   and `glmnet::glmnet`.
 #' @author Umberto Minora \email{umbertofilippo@@tiscali.it}, based on the paper
@@ -50,13 +48,13 @@ validate_rerf <- function(x) {
 #' @examples
 #' x <- matrix(rnorm(100 * 20), 100, 20)
 #' y <- rnorm(100)
-#' mod <- rerf(x, y, 0.1)
+#' mod <- rerf(x, y, lambda = 0.1)
 #' @export
-rerf <- function(x, y, lambda, ntree = 500, nodesize = 5, weights = NULL, ...) {
-  fit.lasso <- glmnet::glmnet(x = x, y = y, lambda = lambda, weights = weights)
+rerf <- function(x, y, lambda, ...) {
+  fit.lasso <- glmnet::glmnet(x = x, y = y, lambda = lambda)
   pred.lasso <- glmnet::predict.glmnet(fit.lasso, newx = x)
   res <- y - pred.lasso
-  fit.rf <- randomForest::randomForest(x = x, y = res, ntree = ntree, nodesize = nodesize)
+  fit.rf <- randomForest::randomForest(x = x, y = res)
   fit <- list(lasso = fit.lasso, rf = fit.rf)
   validate_rerf(new_rerf(fit))
 }
@@ -70,7 +68,7 @@ rerf <- function(x, y, lambda, ntree = 500, nodesize = 5, weights = NULL, ...) {
 #' @examples
 #' x <- matrix(rnorm(100 * 20), 100, 20)
 #' y <- rnorm(100)
-#' mod <- rerf(x, y, 0.1)
+#' mod <- rerf(x, y, lambda = 0.1)
 #' predict(mod, newx = x)
 #' @exportS3Method stats::predict
 predict.rerf <- function(object, newx) {

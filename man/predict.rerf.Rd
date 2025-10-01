@@ -21,6 +21,6 @@ Prediction of test data using Regression-Enhanced Random Forests.
 \examples{
 x <- matrix(rnorm(100 * 20), 100, 20)
 y <- rnorm(100)
-mod <- rerf(x, y, 0.1)
+mod <- rerf(x, y, lambda = 0.1)
 predict(mod, newx = x)
 }
