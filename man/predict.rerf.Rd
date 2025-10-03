@@ -4,13 +4,16 @@
 \alias{predict.rerf}
 \title{Prediction of test data using Regression-Enhanced Random Forests.}
 \usage{
-\method{predict}{rerf}(object, newx)
+\method{predict}{rerf}(object, newx, ...)
 }
 \arguments{
 \item{object}{an object of class "rerf", as that created by the function rerf}
 
 \item{newx}{matrix of new values for x at which predictions are to be made
 function will abort.}
+
+\item{...}{other arguments passed to \link[glmnet:predict.glmnet]{glmnet::predict.glmnet} and
+randomForest:::predict.randomForest.}
 }
 \value{
 A vector of predicted values.

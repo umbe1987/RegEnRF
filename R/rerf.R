@@ -51,10 +51,10 @@ validate_rerf <- function(x) {
 #' mod <- rerf(x, y, lambda = 0.1)
 #' @export
 rerf <- function(x, y, lambda, ...) {
-  fit.lasso <- glmnet::glmnet(x = x, y = y, lambda = lambda)
+  fit.lasso <- glmnet::glmnet(x = x, y = y, lambda = lambda, ...)
   pred.lasso <- glmnet::predict.glmnet(fit.lasso, newx = x)
   res <- y - pred.lasso
-  fit.rf <- randomForest::randomForest(x = x, y = res)
+  fit.rf <- randomForest::randomForest(x = x, y = res, ...)
   fit <- list(lasso = fit.lasso, rf = fit.rf)
   validate_rerf(new_rerf(fit))
 }
@@ -64,6 +64,8 @@ rerf <- function(x, y, lambda, ...) {
 #' @param object an object of class "rerf", as that created by the function rerf
 #' @param newx matrix of new values for x at which predictions are to be made
 #'   function will abort.
+#' @param ... other arguments passed to [glmnet::predict.glmnet] and
+#'   randomForest:::predict.randomForest.
 #' @return A vector of predicted values.
 #' @examples
 #' x <- matrix(rnorm(100 * 20), 100, 20)
@@ -71,12 +73,12 @@ rerf <- function(x, y, lambda, ...) {
 #' mod <- rerf(x, y, lambda = 0.1)
 #' predict(mod, newx = x)
 #' @exportS3Method stats::predict
-predict.rerf <- function(object, newx) {
+predict.rerf <- function(object, newx, ...) {
   if (missing(newx)) stop("You need to supply a value for 'newx'")
   stopifnot(inherits(object, "rerf"))
 
-  pred.lasso <- glmnet::predict.glmnet(object$lasso, newx = newx)
-  pred.rf <- randomForest:::predict.randomForest(object$rf, newdata = newx)
+  pred.lasso <- glmnet::predict.glmnet(object$lasso, newx = newx, ...)
+  pred.rf <- randomForest:::predict.randomForest(object$rf, newdata = newx, ...)
   pred.rerf <- pred.lasso + pred.rf
 
   return(pred.rerf)
