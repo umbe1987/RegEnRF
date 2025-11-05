@@ -2,3 +2,5 @@
 
 S3method(stats::predict,rerf)
 export(rerf)
+import(randomForest)
+importFrom(stats,predict)

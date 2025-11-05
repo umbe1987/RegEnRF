@@ -72,13 +72,15 @@ rerf <- function(x, y, lambda, ...) {
 #' y <- rnorm(100)
 #' mod <- rerf(x, y, lambda = 0.1)
 #' predict(mod, newx = x)
+#' @import randomForest
+#' @importFrom stats predict
 #' @exportS3Method stats::predict
 predict.rerf <- function(object, newx, ...) {
   if (missing(newx)) stop("You need to supply a value for 'newx'")
   stopifnot(inherits(object, "rerf"))
 
   pred.lasso <- glmnet::predict.glmnet(object$lasso, newx = newx, ...)
-  pred.rf <- randomForest:::predict.randomForest(object$rf, newdata = newx, ...)
+  pred.rf <- predict(object$rf, newdata = newx, ...)
   pred.rerf <- pred.lasso + pred.rf
 
   return(pred.rerf)
