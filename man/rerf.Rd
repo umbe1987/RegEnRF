@@ -31,9 +31,17 @@ and \code{glmnet::glmnet}.
 }
 \examples{
 set.seed(111)
-x <- matrix(rnorm(100 * 20), 100, 20)
-y <- rnorm(100)
+data(co2)
+x <- matrix(c(time(co2), cycle(co2)), ncol = 2)
+y <- as.numeric(co2)
 mod <- rerf(x, y, lambda = 0.1)
+freq <- frequency(co2)
+startt <- tsp(co2)[2] + 1 / freq
+xnew.t <- seq(startt, by = 1 / freq, length.out = freq * 3)
+xnew <- matrix(c(xnew.t, cycle(tail(co2, freq * 3))), ncol = 2)
+pred <- predict(mod, xnew)
+pred.ts <- ts(pred, start = startt, frequency = freq)
+plot(ts.union(co2, pred.ts), plot.type = "single", col = c("black", "red"))
 }
 \references{
 Zhang, H., Nettleton, D., & Zhu, Z. (2019). Regression-enhanced
