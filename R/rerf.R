@@ -46,6 +46,7 @@ validate_rerf <- function(x) {
 #'   \url{https://doi.org/10.48550/arXiv.1904.10416}.
 #' @returns An object with S3 class "rerf"
 #' @examples
+#' set.seed(111)
 #' x <- matrix(rnorm(100 * 20), 100, 20)
 #' y <- rnorm(100)
 #' mod <- rerf(x, y, lambda = 0.1)
@@ -68,6 +69,7 @@ rerf <- function(x, y, lambda, ...) {
 #'   randomForest:::predict.randomForest.
 #' @return A vector of predicted values.
 #' @examples
+#' set.seed(111)
 #' x <- matrix(rnorm(100 * 20), 100, 20)
 #' y <- rnorm(100)
 #' mod <- rerf(x, y, lambda = 0.1)

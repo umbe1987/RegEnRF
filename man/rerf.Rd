@@ -30,6 +30,7 @@ This function is based on the packages \code{randomForest::randomForest}
 and \code{glmnet::glmnet}.
 }
 \examples{
+set.seed(111)
 x <- matrix(rnorm(100 * 20), 100, 20)
 y <- rnorm(100)
 mod <- rerf(x, y, lambda = 0.1)
