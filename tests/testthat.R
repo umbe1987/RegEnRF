@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(rerf)
+library(RegEnRF)
 
-test_check("rerf")
+test_check("RegEnRF")

@@ -1,7 +1,7 @@
-test_that("rerf output is correct", {
+test_that("RegEnRF output is correct", {
   x <- matrix(rnorm(100 * 20), 100, 20)
   y <- rnorm(100)
-  mod <- rerf(x, y, 0.1)
+  mod <- RegEnRF(x, y, 0.1)
 
-  expect_s3_class(mod, "rerf")
+  expect_s3_class(mod, "RegEnRF")
 })

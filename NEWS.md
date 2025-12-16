@@ -1,3 +1,3 @@
-# rerf 0.1.0
+# RegEnRF 0.1.0
 
 * Initial CRAN submission.

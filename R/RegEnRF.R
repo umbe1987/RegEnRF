@@ -1,11 +1,11 @@
-new_rerf <- function(x, ..., class = character()) {
-  structure(x, class = "rerf")
+new_RegEnRF <- function(x, ..., class = character()) {
+  structure(x, class = "RegEnRF")
 }
 
-validate_rerf <- function(x) {
+validate_RegEnRF <- function(x) {
   if (!all(c("lasso", "rf") %in% names(x))) {
     stop(
-      "Not a valid `rerf` object"
+      "Not a valid `RegEnRF` object"
     )
   }
 
@@ -27,7 +27,7 @@ validate_rerf <- function(x) {
 
 #' Regression-Enhanced Random Forests
 #'
-#' `rerf()` implements Regression-Enhanced Random Forests algorithm (based on
+#' `RegEnRF()` implements Regression-Enhanced Random Forests algorithm (based on
 #' Zhang et al., 2019 paper) for regression.
 #'
 #' @param x A numeric matrix of predictors. Requirement: nvars >1;
@@ -44,13 +44,13 @@ validate_rerf <- function(x) {
 #' @references Zhang, H., Nettleton, D., & Zhu, Z. (2019). Regression-enhanced
 #'   random forests. arXiv preprint
 #'   \url{https://doi.org/10.48550/arXiv.1904.10416}.
-#' @returns An object with S3 class "rerf"
+#' @returns An object with S3 class "RegEnRF"
 #' @examples
 #' set.seed(111)
 #' data(co2)
 #' x <- matrix(c(time(co2), cycle(co2)), ncol = 2)
 #' y <- as.numeric(co2)
-#' mod <- rerf(x, y, lambda = 0.1)
+#' mod <- RegEnRF(x, y, lambda = 0.1)
 #' freq <- frequency(co2)
 #' startt <- tsp(co2)[2] + 1 / freq
 #' xnew.t <- seq(startt, by = 1 / freq, length.out = freq * 3)
@@ -59,18 +59,18 @@ validate_rerf <- function(x) {
 #' pred.ts <- ts(pred, start = startt, frequency = freq)
 #' plot(ts.union(co2, pred.ts), plot.type = "single", col = c("black", "red"))
 #' @export
-rerf <- function(x, y, lambda, ...) {
+RegEnRF <- function(x, y, lambda, ...) {
   fit.lasso <- glmnet::glmnet(x = x, y = y, lambda = lambda, ...)
   pred.lasso <- glmnet::predict.glmnet(fit.lasso, newx = x)
   res <- y - pred.lasso
   fit.rf <- randomForest::randomForest(x = x, y = res, ...)
   fit <- list(lasso = fit.lasso, rf = fit.rf)
-  validate_rerf(new_rerf(fit))
+  validate_RegEnRF(new_RegEnRF(fit))
 }
 
 #' Prediction of test data using Regression-Enhanced Random Forests.
 #'
-#' @param object an object of class "rerf", as that created by the function rerf
+#' @param object an object of class "RegEnRF", as that created by the function RegEnRF
 #' @param newx matrix of new values for x at which predictions are to be made
 #'   function will abort.
 #' @param ... other arguments passed to [glmnet::predict.glmnet] and
@@ -80,18 +80,18 @@ rerf <- function(x, y, lambda, ...) {
 #' set.seed(111)
 #' x <- matrix(rnorm(100 * 20), 100, 20)
 #' y <- rnorm(100)
-#' mod <- rerf(x, y, lambda = 0.1)
+#' mod <- RegEnRF(x, y, lambda = 0.1)
 #' predict(mod, newx = x)
 #' @import randomForest
 #' @importFrom stats predict
 #' @exportS3Method stats::predict
-predict.rerf <- function(object, newx, ...) {
+predict.RegEnRF <- function(object, newx, ...) {
   if (missing(newx)) stop("You need to supply a value for 'newx'")
-  stopifnot(inherits(object, "rerf"))
+  stopifnot(inherits(object, "RegEnRF"))
 
   pred.lasso <- glmnet::predict.glmnet(object$lasso, newx = newx, ...)
   pred.rf <- predict(object$rf, newdata = newx, ...)
-  pred.rerf <- pred.lasso + pred.rf
+  pred.RegEnRF <- pred.lasso + pred.rf
 
-  return(pred.rerf)
+  return(pred.RegEnRF)
 }

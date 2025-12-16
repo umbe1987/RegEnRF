@@ -1,45 +1,45 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rerf
+# Re
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/umbe1987/rerf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/umbe1987/rerf/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/umbe1987/regenrf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/umbe1987/regenrf/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-`rerf` is the implementation of the Regression-Enhanced Random Forests
-algorithm as described in [Zhang et
+`RegEnRF` is the implementation of the Regression-Enhanced Random
+Forests algorithm as described in [Zhang et
 al. (2019)](https://doi.org/10.48550/arXiv.1904.10416).
 
 ## Installation
 
-You can install rerf like so:
+You can install RegEnRF like so:
 
 ``` r
-install.packages("rerf")
+install.packages("RegEnRF")
 ```
 
 or the development version like so:
 
 ``` r
-devtools::install_github("umbe1987/rerf")
+devtools::install_github("umbe1987/regenrf")
 ```
 
 ## Example
 
 This is an example showing how to perform Regression-Enhanced Random
-Forests with `rerf`. It demonstrates how `rerf` can extrapolate beyond
-the training domain, as opposed to `randomForest`.
+Forests with `RegEnRF`. It demonstrates how `RegEnRF` can extrapolate
+beyond the training domain, as opposed to `randomForest`.
 
 ``` r
-library(rerf)
+library(RegEnRF)
 
 set.seed(111)
 data(co2)
 x <- matrix(c(time(co2), cycle(co2)), ncol = 2)
 y <- as.numeric(co2)
-mod <- rerf(x, y, lambda = 0.1)
+mod <- RegEnRF(x, y, lambda = 0.1)
 #> Warning in rfout$mse/(var(y) * (n - 1)/n): Recycling array of length 1 in vector-array arithmetic is deprecated.
 #>   Use c() or as.vector() instead.
 freq <- frequency(co2)
