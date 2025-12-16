@@ -14,7 +14,13 @@ al. (2019)](https://doi.org/10.48550/arXiv.1904.10416).
 
 ## Installation
 
-You can install the development version of rerf like so:
+You can install rerf like so:
+
+``` r
+install.packages("rerf")
+```
+
+or the development version like so:
 
 ``` r
 devtools::install_github("umbe1987/rerf")
@@ -22,10 +28,9 @@ devtools::install_github("umbe1987/rerf")
 
 ## Example
 
-This is an example showsing how to perform Regression-Enhanced Random
-Forests regression with `rerf`. It demonstrates how `rerf` can
-extrapolate beyond the the training domain, as opposed to
-`randomForest`.
+This is an example showing how to perform Regression-Enhanced Random
+Forests with `rerf`. It demonstrates how `rerf` can extrapolate beyond
+the training domain, as opposed to `randomForest`.
 
 ``` r
 library(rerf)
