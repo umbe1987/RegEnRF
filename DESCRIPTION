@@ -9,7 +9,7 @@ Description: A novel generalized Random Forest method, that can improve on
     RFs by borrowing the strength of penalized parametric regression. Based on
     Zhang et al. (2019) <doi:10.48550/arXiv.1904.10416>.
 License: MIT + file LICENSE
-BugReports: http://github.com/umbe1987/regenrf/issues
+BugReports: https://github.com/umbe1987/regenrf/issues
 Imports: 
     glmnet,
     randomForest

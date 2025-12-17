@@ -46,7 +46,7 @@ plot(ts.union(co2, pred.ts), plot.type = "single", col = c("black", "red"))
 \references{
 Zhang, H., Nettleton, D., & Zhu, Z. (2019). Regression-enhanced
 random forests. arXiv preprint
-\url{https://doi.org/10.48550/arXiv.1904.10416}.
+\doi{10.48550/arXiv.1904.10416}.
 }
 \author{
 Umberto Minora \email{umbertofilippo@tiscali.it}, based on the paper

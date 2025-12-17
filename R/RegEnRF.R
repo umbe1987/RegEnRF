@@ -43,7 +43,7 @@ validate_RegEnRF <- function(x) {
 #'   by Zhang et al. (2019).
 #' @references Zhang, H., Nettleton, D., & Zhu, Z. (2019). Regression-enhanced
 #'   random forests. arXiv preprint
-#'   \url{https://doi.org/10.48550/arXiv.1904.10416}.
+#'   \doi{10.48550/arXiv.1904.10416}.
 #' @returns An object with S3 class "RegEnRF"
 #' @examples
 #' set.seed(111)
