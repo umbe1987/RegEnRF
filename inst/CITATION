@@ -1,10 +1,25 @@
-bibentry(
-  bibtype = "Misc",
-  title = "Regression-Enhanced Random Forests",
-  author = "Haozhe Zhang and Dan Nettleton and Zhengyuan Zhu",
-  year = 2019,
-  eprint = "1904.10416",
-  archivePrefix = "arXiv",
-  primaryClass = "stat.ML",
-  url = "https://arxiv.org/abs/1904.10416"
+c(
+  bibentry(
+    bibtype = "Misc",
+    title = "Regression-Enhanced Random Forests",
+    author = "Haozhe Zhang and Dan Nettleton and Zhengyuan Zhu",
+    year = 2019,
+    eprint = "1904.10416",
+    archivePrefix = "arXiv",
+    primaryClass = "stat.ML",
+    url = "https://arxiv.org/abs/1904.10416"
+  ),
+  bibentry(
+    bibtype = "Manual",
+    title = "RegEnRF: Regression-Enhanced Random Forests",
+    author = person("Umberto", "Minora", ,
+      email = "umbertofilippo@tiscali.it", role = c("aut", "cre", "cph"),
+      comment = c(ORCID = "0000-0003-2151-6500")
+    ),
+    year = 2025,
+    url = "https://CRAN.R-project.org/package=RegEnRF",
+    doi = "10.32614/CRAN.package.RegEnRF",
+    key = "RegEnRF-package"
+  )
 )
+
