@@ -35,8 +35,8 @@ validate_RegEnRF <- function(x) {
 #'   of [glmnet::glmnet()].
 #' @param y A numeric response vector.
 #' @param lambda See 'lambda' argument in [glmnet::glmnet()].
-#' @param ... other arguments passed to [glmnet::glmnet()] and
-#'   [randomForest::randomForest()].
+#' @param glmnet.args other arguments passed to [glmnet::glmnet()] function.
+#' @param rf.args other arguments passed to [randomForest::randomForest()] function.
 #' @details This function is based on the packages `randomForest::randomForest`
 #'   and `glmnet::glmnet`.
 #' @author Umberto Minora \email{umbertofilippo@@tiscali.it}, based on the paper
@@ -59,11 +59,13 @@ validate_RegEnRF <- function(x) {
 #' pred.ts <- ts(pred, start = startt, frequency = freq)
 #' plot(ts.union(co2, pred.ts), plot.type = "single", col = c("black", "red"))
 #' @export
-RegEnRF <- function(x, y, lambda, ...) {
-  fit.lasso <- glmnet::glmnet(x = x, y = y, lambda = lambda, ...)
+RegEnRF <- function(x, y, lambda, glmnet.args = list(), rf.args = list()) {
+  stopifnot(is.list(glmnet.args))
+  stopifnot(is.list(rf.args))
+  fit.lasso <- do.call(glmnet::glmnet, c(list(x = x, y = y, lambda = lambda), glmnet.args))
   pred.lasso <- glmnet::predict.glmnet(fit.lasso, newx = x)
   res <- y - pred.lasso
-  fit.rf <- randomForest::randomForest(x = x, y = res, ...)
+  fit.rf <- do.call(randomForest::randomForest, c(list(x = x, y = res), rf.args))
   fit <- list(lasso = fit.lasso, rf = fit.rf)
   validate_RegEnRF(new_RegEnRF(fit))
 }

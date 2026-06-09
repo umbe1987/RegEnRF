@@ -4,7 +4,7 @@
 \alias{RegEnRF}
 \title{Regression-Enhanced Random Forests}
 \usage{
-RegEnRF(x, y, lambda, ...)
+RegEnRF(x, y, lambda, glmnet.args = list(), rf.args = list())
 }
 \arguments{
 \item{x}{A numeric matrix of predictors. Requirement: nvars >1;
@@ -15,8 +15,9 @@ of \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
 
 \item{lambda}{See 'lambda' argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
 
-\item{...}{other arguments passed to \code{\link[glmnet:glmnet]{glmnet::glmnet()}} and
-\code{\link[randomForest:randomForest]{randomForest::randomForest()}}.}
+\item{glmnet.args}{other arguments passed to \code{\link[glmnet:glmnet]{glmnet::glmnet()}} function.}
+
+\item{rf.args}{other arguments passed to \code{\link[randomForest:randomForest]{randomForest::randomForest()}} function.}
 }
 \value{
 An object with S3 class "RegEnRF"
