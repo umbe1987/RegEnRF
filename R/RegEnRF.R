@@ -35,8 +35,8 @@ validate_RegEnRF <- function(x) {
 #'   of [glmnet::glmnet()].
 #' @param y A numeric response vector.
 #' @param lambda See 'lambda' argument in [glmnet::glmnet()].
-#' @param glmnet.args other arguments passed to [glmnet::glmnet()] function.
-#' @param rf.args other arguments passed to [randomForest::randomForest()] function.
+#' @param glmnet.args List of arguments passed to [glmnet::glmnet()] function.
+#' @param rf.args List of arguments passed to [randomForest::randomForest()] function.
 #' @details This function is based on the packages `randomForest::randomForest`
 #'   and `glmnet::glmnet`.
 #' @author Umberto Minora \email{umbertofilippo@@tiscali.it}, based on the paper

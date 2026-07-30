@@ -15,9 +15,9 @@ of \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
 
 \item{lambda}{See 'lambda' argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.}
 
-\item{glmnet.args}{other arguments passed to \code{\link[glmnet:glmnet]{glmnet::glmnet()}} function.}
+\item{glmnet.args}{List of arguments passed to \code{\link[glmnet:glmnet]{glmnet::glmnet()}} function.}
 
-\item{rf.args}{other arguments passed to \code{\link[randomForest:randomForest]{randomForest::randomForest()}} function.}
+\item{rf.args}{List of arguments passed to \code{\link[randomForest:randomForest]{randomForest::randomForest()}} function.}
 }
 \value{
 An object with S3 class "RegEnRF"
