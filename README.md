@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# RegEnRF
+# RegEnRF <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
 
@@ -51,4 +51,4 @@ pred.ts <- ts(pred, start = startt, frequency = freq)
 plot(ts.union(co2, pred.ts), plot.type = "single", col = c("black", "red"))
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" alt="" width="100%" />
