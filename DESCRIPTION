@@ -1,7 +1,7 @@
 Type: Package
 Package: RegEnRF
 Title: Regression-Enhanced Random Forests
-Version: 2.0.0
+Version: 2.0.1
 Authors@R: 
     person("Umberto", "Minora", , "umbertofilippo@tiscali.it", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-2151-6500"))

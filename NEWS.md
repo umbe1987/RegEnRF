@@ -1,3 +1,5 @@
+# RegEnRF 2.0.1
+
 # RegEnRF 2.0.0
 
 ## Breaking changes
